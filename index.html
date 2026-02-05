@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, Shammas | 2025 Edition</title>
+    <style>
+        /* CORE DESIGN SYSTEM - 2025 MODERN AESTHETIC */
+        :root {
+            --bg-dark: #0a0a0c;
+            --glass: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --accent: #d4af37; /* Sophisticated Gold */
+            --accent-glow: rgba(212, 175, 55, 0.4);
+            --text-main: #e0e0e0;
+            --text-muted: #a0a0a0;
+            --font-serif: 'Georgia', serif;
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* BACKGROUND PARTICLES */
+        #particle-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at center, #1a1a2e 0%, #0a0a0c 100%);
+        }
+
+        /* GUIDED JOURNEY SECTIONS */
+        section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* GLASSMORPHISM CARD STYLE */
+        .glass-card {
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 3rem;
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+        }
+
+        /* TYPOGRAPHY */
+        h1 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 800;
+            letter-spacing: -2px;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #fff, var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .heartfelt-text {
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-size: 1.4rem;
+            color: var(--text-muted);
+            margin-top: 1.5rem;
+        }
+
+        /* INTERACTIVE BUTTONS */
+        .btn-modern {
+            margin-top: 2rem;
+            padding: 1rem 2.5rem;
+            background: transparent;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: 0.4s;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+        }
+
+        .btn-modern:hover {
+            background: var(--accent);
+            color: var(--bg-dark);
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+
+        /* MEMORY GALLERY GRID */
+        .memory-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 2rem;
+        }
+
+        .memory-item {
+            aspect-ratio: 1;
+            background: var(--glass-border);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            transition: 0.3s;
+            cursor: default;
+        }
+
+        .memory-item:hover {
+            transform: scale(1.05) rotate(3deg);
+            background: var(--accent-glow);
+        }
+
+        /* THE "WISH" INTERACTION */
+        .wish-container {
+            position: relative;
+            margin: 2rem 0;
+        }
+
+        .cake-icon {
+            font-size: 5rem;
+            filter: drop-shadow(0 0 10px var(--accent-glow));
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .cake-icon:hover { transform: scale(1.1); }
+
+        /* SCROLL INDICATOR */
+        .scroll-down {
+            position: absolute;
+            bottom: 30px;
+            animation: bounce 2s infinite;
+            color: var(--accent);
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-10px);}
+            60% {transform: translateY(-5px);}
+        }
+
+        /* CUSTOM CURSOR (2025 Trend) */
+        #cursor {
+            width: 20px;
+            height: 20px;
+            border: 1px solid var(--accent);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s ease;
+        }
+
+        @media (max-width: 600px) {
+            .glass-card { padding: 1.5rem; }
+            h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="cursor"></div>
+    <canvas id="particle-canvas"></canvas>
+
+    <!-- SECTION 1: THE WELCOME -->
+    <section id="hero" class="visible">
+        <div class="glass-card">
+            <p style="letter-spacing: 4px; color: var(--accent); margin-bottom: 1rem;">EST. FOREVER</p>
+            <h1>To My Best Friend,<br>Shammas</h1>
+            <p class="heartfelt-text">Life is a collection of moments, but the best ones always include you.</p>
+            <button class="btn-modern" onclick="scrollToSection('journey')">Enter the Story</button>
+        </div>
+        <div class="scroll-down">SCROLL TO DISCOVER</div>
+    </section>
+
+    <!-- SECTION 2: THE JOURNEY -->
+    <section id="journey">
+        <div class="glass-card">
+            <h2 style="font-size: 2rem; margin-bottom: 1.5rem;">Our Unwritten Story</h2>
+            <p style="color: var(--text-muted); font-size: 1.1rem;">
+                From the random late-night laughs to the quiet moments when no words were needed. 
+                Shammas, you aren't just a friend; you're the person who makes the world feel a little bit brighter just by being in it.
+            </p>
+            <div class="memory-grid">
+                <div class="memory-item" title="Late night talks">🌙</div>
+                <div class="memory-item" title="Inside jokes">😂</div>
+                <div class="memory-item" title="Endless support">🤝</div>
+                <div class="memory-item" title="Pure magic">✨</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: THE HEART OF IT -->
+    <section id="emotions">
+        <div class="glass-card">
+            <h2 style="font-size: 2rem; color: var(--accent);">Why You're Special</h2>
+            <p class="heartfelt-text" style="color: #fff; margin-bottom: 2rem;">
+                "Real friendship is when your friend comes over to your house and then you both just take a nap."
+            </p>
+            <p style="color: var(--text-muted);">
+                But with us, it's more. It's the way you listen, the way you challenge me to be better, 
+                and the way you stay Shammas—unapologetically yourself.
+            </p>
+        </div>
+    </section>
+
+    <!-- SECTION 4: THE INTERACTIVE WISH -->
+    <section id="wish">
+        <div class="glass-card">
+            <h1>Make A Wish</h1>
+            <div class="wish-container">
+                <div class="cake-icon" id="cake" onclick="makeWish()">🎂</div>
+            </div>
+            <p id="wish-instruction">Tap the cake to light up your year</p>
+            <div id="wish-result" style="display:none; margin-top: 20px; color: var(--accent); font-weight: bold;">
+                ✨ May 2025 be your most luminous year yet! ✨
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: THE FINALE -->
+    <section id="finale">
+        <div class="glass-card">
+            <p style="color: var(--accent); margin-bottom: 1rem;">HAPPY BIRTHDAY 2025</p>
+            <h1>Always You, Shammas.</h1>
+            <p class="heartfelt-text">I hope today is as incredible as the soul you are.</p>
+            <p style="margin-top: 2rem; font-size: 0.9rem; color: var(--text-muted);">
+                Sent with infinite love & gratitude.
+            </p>
+        </div>
+    </section>
+
+    <script>
+        // 1. DYNAMIC PARTICLE BACKGROUND (Native Canvas - No Dependencies)
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        window.addEventListener('resize', resize);
+        resize();
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 0.5;
+                this.speedX = Math.random() * 0.5 - 0.25;
+                this.speedY = Math.random() * 0.5 - 0.25;
+                this.opacity = Math.random() * 0.5 + 0.2;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x > canvas.width) this.x = 0;
+                if (this.x < 0) this.x = canvas.width;
+                if (this.y > canvas.height) this.y = 0;
+                if (this.y < 0) this.y = canvas.height;
+            }
+            draw() {
+                ctx.fillStyle = `rgba(212, 175, 55, ${this.opacity})`;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < 100; i++) particles.push(new Particle());
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+
+        // 2. SCROLL REVEAL ENGINE (Intersection Observer)
+        const observerOptions = { threshold: 0.2 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => observer.observe(section));
+
+        // 3. NAVIGATION & INTERACTIONS
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function makeWish() {
+            const cake = document.getElementById('cake');
+            const result = document.getElementById('wish-result');
+            const instruction = document.getElementById('wish-instruction');
+            
+            cake.style.transform = "scale(1.5) rotate(10deg)";
+            setTimeout(() => {
+                cake.innerHTML = "✨";
+                instruction.style.display = "none";
+                result.style.display = "block";
+                confettiEffect();
+            }, 300);
+        }
+
+        // 4. SIMPLE CONFETTI BURST
+        function confettiEffect() {
+            for(let i=0; i<50; i++) {
+                const conf = document.createElement('div');
+                conf.style.position = 'fixed';
+                conf.style.width = '10px';
+                conf.style.height = '10px';
+                conf.style.backgroundColor = i % 2 === 0 ? 'var(--accent)' : '#fff';
+                conf.style.left = '50%';
+                conf.style.top = '50%';
+                conf.style.zIndex = '1000';
+                conf.style.borderRadius = '50%';
+                document.body.appendChild(conf);
+
+                const angle = Math.random() * Math.PI * 2;
+                const velocity = Math.random() * 10 + 5;
+                let x = 0;
+                let y = 0;
+
+                const move = setInterval(() => {
+                    x += Math.cos(angle) * velocity;
+                    y += Math.sin(angle) * velocity + 2; // Gravity
+                    conf.style.transform = `translate(${x}px, ${y}px)`;
+                    if(y > window.innerHeight) {
+                        clearInterval(move);
+                        conf.remove();
+                    }
+                }, 16);
+            }
+        }
+
+        // 5. CUSTOM CURSOR
+        const cursor = document.getElementById('cursor');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+    </script>
+</body>
+</html>
